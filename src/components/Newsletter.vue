@@ -1,6 +1,10 @@
 <template lang="">
   <div class="main-container">
-    <img :src="leftImage" alt="here could be your advertisement" />
+    <img
+      :src="leftImage"
+      id="left-image-newsletter"
+      alt="here could be your advertisement"
+    />
     <div class="signup-form-wrapper">
       <h1>Subscribe to our Newsletter</h1>
       <form>
@@ -42,7 +46,11 @@
         </div>
       </form>
     </div>
-    <img :src="rightImage" alt="here could be your advertisement" />
+    <img
+      :src="rightImage"
+      id="right-image-newsletter"
+      alt="here could be your advertisement"
+    />
   </div>
 </template>
 

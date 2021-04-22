@@ -8,7 +8,6 @@
     <div id="navbar-wrapper">
       <Navbar />
     </div>
-    <h1>Hi can I be visible too?</h1>
     <MainOne />
     <div class="placeholder">
       <p>
@@ -113,7 +112,7 @@ export default {
   }
   .navbar-is-sticky {
     color: #fff;
-    background-color: #8181819d;
+    background-color: #424242;
   }
 }
 </style>
