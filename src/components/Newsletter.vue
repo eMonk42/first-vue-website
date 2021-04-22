@@ -1,20 +1,21 @@
 <template lang="">
   <div class="main-container">
+    <img :src="leftImage" alt="here could be your advertisement" />
     <div class="signup-form-wrapper">
-      <h1>Typeform</h1>
+      <h1>Subscribe to our Newsletter</h1>
       <form>
         <div class="form-group email-input-wrapper">
-          <label for="email-input">email</label>
+          <label for="email-input">Email</label>
           <input
             @change="checkMail"
             type="text"
             id="email-input"
-            placeholder="bruce@wayne.com"
+            placeholder="john.smith@fakemail.gov"
           />
           <p><span id="email-error"> </span></p>
         </div>
         <div class="form-group pwd-input-wrapper">
-          <label for="pwd-input">password</label>
+          <label for="pwd-input">Password</label>
           <input
             @change="checkPwd"
             type="password"
@@ -23,14 +24,14 @@
           />
           <p><span id="pwd-error"> </span></p>
         </div>
-        <div class="form-group terms-input-wrapper">
+        <div class="form-group input-wrapper">
           <input @change="checkTerms" type="checkbox" name="terms" id="terms" />
-          <label for="terms">accept Terms</label>
+          <label for="terms">accept <a href="">Terms</a></label>
         </div>
-        <div class="form-group policy-input-wrapper">
+        <label class="form-group input-wrapper">
           <input @change="checkPolicy" type="checkbox" name="" id="policy" />
-          <label for="policy">accept grouop policy</label>
-        </div>
+          <label for="policy">accept <a href="">group policy</a></label>
+        </label>
         <div class="form-group submit-wrapper">
           <input
             @click.prevent="handleSubmit"
@@ -41,10 +42,14 @@
         </div>
       </form>
     </div>
+    <img :src="rightImage" alt="here could be your advertisement" />
   </div>
 </template>
 
 <script>
+import leftImage from "@/assets/images/submit-left.png";
+import rightImage from "@/assets/images/submit-right.png";
+
 let emailError = document.getElementById("email-error");
 let pwdError = document.getElementById("pwd-error");
 let emailInput = document.getElementById("email-input");
@@ -78,53 +83,50 @@ export default {
       passwordValid,
       emailValid,
       termsAccepted,
-      policyAccepted
+      policyAccepted,
+      leftImage,
+      rightImage
     };
   },
   methods: {
     checkPwd() {
-      console.log("checkpwd here");
       let currValue = pwdInput.value;
 
       if (currValue == "") {
         pwdError.innerText = "";
       } else if (!pwdRegex.test(currValue)) {
         pwdError.innerText = "This password is not valid";
-        pwdError.style.color = "rgba(255,0,0,0.4)";
+        pwdError.style.color = "rgba(255,0,0,0.8)";
       } else {
         pwdError.innerText = "Nice Password!";
-        pwdError.style.color = "rgba(55, 55, 55, 0.3)";
+        pwdError.style.color = "rgba(55, 55, 55, 0.8)";
         passwordValid = true;
       }
     },
     checkMail() {
-      console.log("checkmnail here");
       if (emailInput.value === "") {
         emailError.innerText = "";
       } else if (emailRegex.test(emailInput.value)) {
         emailError.innerText = "This email seems fine to me";
-        emailError.style.color = "rgba(55, 55, 55, 0.3)";
+        emailError.style.color = "rgba(55, 55, 55, 0.8)";
         emailValid = true;
       } else {
         emailError.innerText = "That's not a valid email, dude!";
-        emailError.style.color = "rgba(255,0,0,0.4)";
+        emailError.style.color = "rgba(255,0,0,0.8)";
       }
     },
     checkTerms() {
-      console.log("checkterms here");
       if (policy.checked) {
         termsAccepted = true;
       }
     },
 
     checkPolicy() {
-      console.log("checkpolicy here");
       if (policy.checked) {
         policyAccepted = true;
       }
     },
     handleSubmit() {
-      console.log("handleSubmit here");
       this.checkMail();
       this.checkPolicy();
       this.checkPwd();
@@ -149,9 +151,6 @@ export default {
     submitButton = document.getElementById("submit-button");
     terms = document.getElementById("terms");
     policy = document.getElementById("policy");
-    console.log("hi everything got mounted");
-    console.log(emailInput);
-    console.log(this.emailInput);
   }
 };
 </script>
@@ -161,6 +160,30 @@ label {
   display: inline-block;
   width: 100%;
   margin-bottom: 0.5rem;
+  font-weight: 600;
+  a {
+    text-decoration: none;
+    color: #111;
+    transition: all 0.3s linear;
+    position: relative;
+  }
+  a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(201, 77, 32);
+    transform: scaleX(0);
+    height: 1px;
+    transform-origin: 0;
+    transition: transform 0.2s ease-in-out;
+    transition: all 0.2s linear;
+  }
+
+  a:hover::after {
+    transform: none;
+  }
 }
 
 input {
@@ -170,37 +193,33 @@ input {
 
 #pwd-error {
   color: rgba(55, 55, 55, 0.3);
-  margin: 0.5rem;
-  font-size: 0.8rem;
+  margin: 0.25rem;
+  font-size: 0.75rem;
   display: inline-block;
-  min-height: 0.8rem;
+  min-height: 0.75rem;
 }
 
 #email-error {
   color: rgba(55, 55, 55, 0.3);
-  margin: 0.5rem;
-  font-size: 0.8rem;
+  margin: 0.25rem;
+  font-size: 0.75rem;
   display: inline-block;
-  min-height: 0.8rem;
+  min-height: 0.75rem;
 }
 
-.terms-input-wrapper {
+#email-input {
+  padding: 0.5rem;
+}
+
+#pwd-input {
+  padding: 0.5rem;
+}
+
+.input-wrapper {
   display: flex;
   width: 100%;
   margin-right: auto;
-  input[type="checkbox"] {
-    flex: 0 0 0%;
-  }
-  label {
-    margin: auto 0 auto 0.5rem;
-  }
-}
-
-.policy-input-wrapper {
-  display: flex;
-  justify-content: flex-start;
-  width: 100%;
-  margin-right: auto;
+  position: relative;
   input[type="checkbox"] {
     flex: 0 0 0%;
   }
@@ -212,23 +231,27 @@ input {
 #policy {
   margin-right: auto;
   padding: 0.5rem;
-  border: 2px solid gold;
 }
 
 .main-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 3rem 0;
-  border: 1px solid green;
+  border-bottom: 3px solid rgb(201, 77, 32);
+  img {
+    max-width: 33%;
+  }
 }
 
 .signup-form-wrapper {
   //   margin-bottom: 5vh;
   width: 100%;
   max-width: 24rem;
-  padding: 0.5rem;
-  border: 2px solid magenta;
+  padding: 1.5rem;
+  margin: 1rem;
+  border: 1px solid #000;
+  box-shadow: 5px 10px #888888;
+  background-color: rgba(255, 255, 255, 0.2);
   * {
     width: 100%;
   }
@@ -248,15 +271,30 @@ input {
 
 .submit-wrapper {
   input {
-    background-color: #333;
+    background-color: #111;
     color: #ddd;
     text-decoration: none;
     font-weight: 400;
-    border: 2px solid rgb(57, 131, 57);
-    border-radius: 8px;
+    padding: 0.5rem 0;
+    transition: all 0.5s linear;
   }
   input:hover {
     cursor: pointer;
+    letter-spacing: 3px;
+    background-color: rgb(201, 77, 32);
+  }
+}
+
+@media (max-width: 1400px) {
+  .main-container {
+    justify-content: center;
+    padding-bottom: 3rem;
+    img {
+      display: none;
+    }
+    // .signup-form-wrapper {
+    //   max-width: 75%;
+    // }
   }
 }
 </style>

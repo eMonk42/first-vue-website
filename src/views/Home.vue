@@ -18,6 +18,7 @@
       </p>
     </div>
     <Newsletter />
+    <Footer />
   </div>
 </template>
 <script>
@@ -25,6 +26,7 @@ import IntroVideo from "../components/IntroVideo";
 import Navbar from "@/components/Navbar.vue";
 import MainOne from "@/components/MainOne.vue";
 import Newsletter from "@/components/Newsletter";
+import Footer from "@/components/Footer.vue";
 
 export default {
   data() {
@@ -34,7 +36,8 @@ export default {
     IntroVideo,
     Navbar,
     MainOne,
-    Newsletter
+    Newsletter,
+    Footer
   },
   computed: {},
   methods: {},

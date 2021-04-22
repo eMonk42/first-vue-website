@@ -71,7 +71,7 @@ export default {
       }
     }
     .nav-item:hover {
-      transform: scale(1.15) translateY(-3px);
+      transform: scale(1.15); //translateY(-3px);
     }
   }
   #matrix-button {
