@@ -58,13 +58,19 @@
       </button>
       <ul v-if="showNavbar" id="mobile-menu-list">
         <li class="mobile-menu-list-item">
-          <a @click.prevent="simple" href="#">Link 1</a>
+          <a @click.prevent="scroll($event)" href="#intro-video-wrapper"
+            >Link 1</a
+          >
         </li>
         <li class="mobile-menu-list-item">
-          <a @click.prevent="simple" href="#">Link 2</a>
+          <a @click.prevent="scroll($event)" href="#scroll-position-one"
+            >Link 2</a
+          >
         </li>
         <li class="mobile-menu-list-item">
-          <a @click.prevent="simple" href="#">Link 3</a>
+          <a @click.prevent="scroll($event)" href="#scroll-position-two"
+            >Link 3</a
+          >
         </li>
         <li class="mobile-menu-list-item">
           <a @click.prevent="scroll($event)" href="#second-main-wrapper"
@@ -151,9 +157,6 @@ export default {
     },
     toggleNavbar() {
       this.showNavbar = !this.showNavbar;
-    },
-    simple() {
-      return 0;
     },
     pass(event) {
       this.$emit("updated", event);
