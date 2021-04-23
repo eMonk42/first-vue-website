@@ -6,20 +6,16 @@
     </div>
     <div id="navbar-sticky-check-element"></div>
     <div id="navbar-wrapper">
-      <Navbar />
+      <Navbar @updated="say" />
     </div>
-    <MainOne />
+    <MainThree />
+    <a id="scroll-position-two" href="#"></a>
+    <MainOne :changeImage="isOn" />
     <div id="second-main-wrapper">
       <MainTwo />
     </div>
-    <div class="placeholder">
-      <p>
-        fugiat consequuntur beatae. Laborum, nesciunt soluta sit voluptates
-        culpa similique aliquam ut accusamus provident ipsam, deserunt maiores
-        repellendus accusantium, rem
-      </p>
-    </div>
     <Newsletter />
+    <a id="scroll-position-three" href="#"></a>
     <Footer />
   </div>
 </template>
@@ -30,10 +26,12 @@ import MainOne from "@/components/MainOne.vue";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer.vue";
 import MainTwo from "@/components/MainTwo.vue";
-
+import MainThree from "@/components/MainThree";
 export default {
   data() {
-    return {};
+    return {
+      isOn: false
+    };
   },
   components: {
     IntroVideo,
@@ -41,12 +39,14 @@ export default {
     MainOne,
     Newsletter,
     Footer,
-    MainTwo
+    MainTwo,
+    MainThree
   },
   computed: {},
   methods: {
     say() {
-      console.log("Hallo");
+      console.log("updated got catched");
+      this.isOn = !this.isOn;
     },
     play() {
       console.log("catched");
@@ -103,10 +103,6 @@ export default {
 </script>
 <style lang="scss">
 #global-wrapper {
-  .placeholder {
-    min-height: 500px;
-    z-index: 100;
-  }
   #c {
     position: fixed;
     z-index: -1;

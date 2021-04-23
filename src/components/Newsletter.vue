@@ -242,11 +242,13 @@ input {
 }
 
 .main-container {
+  padding-top: 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-bottom: 3px solid rgb(201, 77, 32);
-  background-color: #444;
+  background-image: linear-gradient(#000, rgb(16, 34, 53));
+  //background-color: #444;
   img {
     max-width: 33%;
   }

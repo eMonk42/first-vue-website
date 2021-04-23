@@ -7,4 +7,13 @@
 
 html {
   font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+.grabbing {
+  cursor: grabbing;
+}
+
+.grabbing .slide img {
+  transform: scale(0.9);
 }

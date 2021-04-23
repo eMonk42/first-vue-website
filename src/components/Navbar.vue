@@ -2,12 +2,31 @@
   <div id="navbar-wrapper">
     <ul id="nav-menu">
       <li class="nav-item">
-        <a @click.prevent="emit" href="#">Link 1</a>
+        <a @click.prevent="scroll($event)" href="#intro-video-wrapper"
+          >Link 1</a
+        >
+        <!-- pass($event) -->
       </li>
-      <li class="nav-item"><a @click.prevent="simple" href="#">Link 2</a></li>
-      <li class="nav-item"><a @click.prevent="simple" href="#">Link 3</a></li>
-      <li class="nav-item"><a @click.prevent="simple" href="#">Link 4</a></li>
-      <li class="nav-item"><a @click.prevent="simple" href="#">Link 5</a></li>
+      <li class="nav-item">
+        <a @click.prevent="scroll($event)" href="#scroll-position-one"
+          >Link 2</a
+        >
+      </li>
+      <li class="nav-item">
+        <a @click.prevent="scroll($event)" href="#scroll-position-two"
+          >Link 3</a
+        >
+      </li>
+      <li class="nav-item">
+        <a @click.prevent="scroll($event)" href="#second-main-wrapper"
+          >Link 4</a
+        >
+      </li>
+      <li class="nav-item">
+        <a @click.prevent="scroll($event)" href="#scroll-position-three"
+          >Link 5</a
+        >
+      </li>
     </ul>
     <button
       @click="toggleMatrix"
@@ -48,7 +67,9 @@
           <a @click.prevent="simple" href="#">Link 3</a>
         </li>
         <li class="mobile-menu-list-item">
-          <a @click.prevent="simple" href="#">Link 4</a>
+          <a @click.prevent="scroll($event)" href="#second-main-wrapper"
+            >Link 4</a
+          >
         </li>
       </ul>
       <img @click="toggleNavbar" :src="showNavbar ? close : open" alt="" />
@@ -99,9 +120,12 @@ export default {
         document.getElementById("main-one-wrapper").style.opacity = "initial";
         document.getElementById("second-main-wrapper").style.backgroundColor =
           "#000";
-        document.getElementById("submit-background").style.backgroundColor =
-          "#444";
+        document.getElementById("submit-background").style.opacity = "initial";
+        document.querySelector(".main-three-wrapper").style.backgroundColor =
+          "#333";
         this.matrix = false;
+        document.querySelector(".slider-container").style.opacity = "1";
+        document.querySelector(".main-three-wrapper").style.opacity = "1";
       } else {
         // document.querySelector("html").style.fontFamily = "'Libre Barcode 128'";
         document.getElementById("audio").play();
@@ -117,8 +141,11 @@ export default {
         document.getElementById("main-one-wrapper").style.opacity = "0.5";
         document.getElementById("second-main-wrapper").style.backgroundColor =
           "#00000000";
-        document.getElementById("submit-background").style.backgroundColor =
+        document.getElementById("submit-background").style.opacity = "0.3";
+        document.querySelector(".main-three-wrapper").style.backgroundColor =
           "#00000000";
+        document.querySelector(".slider-container").style.opacity = "0.4";
+        document.querySelector(".main-three-wrapper").style.opacity = "0.4";
         this.matrix = true;
       }
     },
@@ -128,9 +155,20 @@ export default {
     simple() {
       return 0;
     },
-    emit() {
-      this.$emit("updated");
-      console.log("emitted");
+    pass(event) {
+      this.$emit("updated", event);
+      console.log("emitted updated");
+      //console.log(event);
+    },
+    scroll(e) {
+      e.preventDefault();
+      let vuehref = e.currentTarget.href;
+      vuehref = vuehref.substring(vuehref.indexOf("#"), vuehref.length);
+      if (vuehref == "#second-main-wrapper") {
+        document.querySelector(vuehref).scrollIntoView({ block: "center" });
+      } else {
+        document.querySelector(vuehref).scrollIntoView();
+      }
     }
   }
 };

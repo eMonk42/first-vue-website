@@ -31,6 +31,11 @@
         perspiciatis!
       </p>
       <a href="#">Click this</a>
+      <a
+        id="scroll-position-one"
+        href="#"
+        style="z-index: -999; top: 50vh; position: absolute; background-color: #ffffff00;"
+      ></a>
     </div>
   </section>
   <!-- <div id="navbar">
@@ -64,6 +69,9 @@ export default {
 </script>
 
 <style lang="scss">
+#scroll-position-one:hover {
+  cursor: default;
+}
 .showcase {
   //   position: absolute;
   right: 0;
