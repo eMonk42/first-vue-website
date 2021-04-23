@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="main-container">
+  <div class="main-container" id="submit-background">
     <img
       :src="leftImage"
       id="left-image-newsletter"
@@ -246,6 +246,7 @@ input {
   justify-content: space-between;
   align-items: center;
   border-bottom: 3px solid rgb(201, 77, 32);
+  background-color: #444;
   img {
     max-width: 33%;
   }
@@ -257,8 +258,8 @@ input {
   max-width: 24rem;
   padding: 1.5rem;
   margin: 1rem;
-  border: 1px solid #000;
-  box-shadow: 5px 10px #888888;
+  border: 1px solid #ddd;
+  box-shadow: 5px 10px #222; //888
   background-color: rgba(255, 255, 255, 0.2);
   * {
     width: 100%;

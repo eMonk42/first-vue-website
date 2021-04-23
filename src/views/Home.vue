@@ -9,6 +9,9 @@
       <Navbar />
     </div>
     <MainOne />
+    <div id="second-main-wrapper">
+      <MainTwo />
+    </div>
     <div class="placeholder">
       <p>
         fugiat consequuntur beatae. Laborum, nesciunt soluta sit voluptates
@@ -26,6 +29,7 @@ import Navbar from "@/components/Navbar.vue";
 import MainOne from "@/components/MainOne.vue";
 import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer.vue";
+import MainTwo from "@/components/MainTwo.vue";
 
 export default {
   data() {
@@ -36,10 +40,18 @@ export default {
     Navbar,
     MainOne,
     Newsletter,
-    Footer
+    Footer,
+    MainTwo
   },
   computed: {},
-  methods: {},
+  methods: {
+    say() {
+      console.log("Hallo");
+    },
+    play() {
+      console.log("catched");
+    }
+  },
   mounted() {
     //-----------------------------------
     var observer = new IntersectionObserver(
@@ -106,13 +118,21 @@ export default {
     position: sticky;
     top: 0;
     transition: all 0.3s linear;
+    // border-bottom: 1px solid rgb(201, 77, 32);
   }
   #navbar-sticky-check-element {
     height: 1px;
+    z-index: -1;
+    margin-top: -1px;
   }
   .navbar-is-sticky {
     color: #fff;
-    background-color: #424242;
+    background-color: #252525;
+    z-index: 100;
+  }
+  #second-main-wrapper {
+    background-color: #000;
+    padding-bottom: 3rem;
   }
 }
 </style>

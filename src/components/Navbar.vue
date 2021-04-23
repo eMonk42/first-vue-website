@@ -1,15 +1,33 @@
 <template lang="">
   <div id="navbar-wrapper">
     <ul id="nav-menu">
-      <li class="nav-item"><a href="">Link 1</a></li>
-      <li class="nav-item"><a href="">Link 2</a></li>
-      <li class="nav-item"><a href="">Link 3</a></li>
-      <li class="nav-item"><a href="">Link 4</a></li>
-      <li class="nav-item"><a href="">Link 5</a></li>
+      <li class="nav-item">
+        <a @click.prevent="emit" href="#">Link 1</a>
+      </li>
+      <li class="nav-item"><a @click.prevent="simple" href="#">Link 2</a></li>
+      <li class="nav-item"><a @click.prevent="simple" href="#">Link 3</a></li>
+      <li class="nav-item"><a @click.prevent="simple" href="#">Link 4</a></li>
+      <li class="nav-item"><a @click.prevent="simple" href="#">Link 5</a></li>
     </ul>
-    <button @click="toggleMatrix" class="matrix-button" id="one">
+    <button
+      @click="toggleMatrix"
+      class="matrix-button"
+      id="one"
+      style="z-index: -1;"
+    >
       Red Pill
     </button>
+    <audio
+      controls
+      id="audio"
+      style="z-index: -1; position: absolute; bottom: 0; opacity: 0;"
+    >
+      <source
+        src="@/assets/music/song.mp3"
+        type="audio/mpeg"
+        style="z-index: -1;"
+      />
+    </audio>
     <div id="nav-menu-mobile">
       <button
         v-if="showNavbar"
@@ -20,10 +38,18 @@
         {{ !matrix ? "Red Pill" : "Blue Pill" }}
       </button>
       <ul v-if="showNavbar" id="mobile-menu-list">
-        <li class="mobile-menu-list-item"><a href="">Link 1</a></li>
-        <li class="mobile-menu-list-item"><a href="">Link 2</a></li>
-        <li class="mobile-menu-list-item"><a href="">Link 3</a></li>
-        <li class="mobile-menu-list-item"><a href="">Link 4</a></li>
+        <li class="mobile-menu-list-item">
+          <a @click.prevent="simple" href="#">Link 1</a>
+        </li>
+        <li class="mobile-menu-list-item">
+          <a @click.prevent="simple" href="#">Link 2</a>
+        </li>
+        <li class="mobile-menu-list-item">
+          <a @click.prevent="simple" href="#">Link 3</a>
+        </li>
+        <li class="mobile-menu-list-item">
+          <a @click.prevent="simple" href="#">Link 4</a>
+        </li>
       </ul>
       <img @click="toggleNavbar" :src="showNavbar ? close : open" alt="" />
     </div>
@@ -32,23 +58,34 @@
 <script>
 import open from "@/assets/icons/menu2.png";
 import close from "@/assets/icons/close2.png";
+import leftFire from "@/assets/images/submit-left-fire.png";
+import rightFire from "@/assets/images/submit-right-fire.png";
+import leftImage from "@/assets/images/submit-left.png";
+import rightImage from "@/assets/images/submit-right.png";
 
 let showNavbar = false;
 let matrix = false;
 
 export default {
+  // emits: ["updated"],
   data() {
     return {
       open,
       close,
       showNavbar,
-      matrix
+      matrix,
+      leftFire,
+      rightFire,
+      leftImage,
+      rightImage
     };
   },
   methods: {
     toggleMatrix() {
       document.getElementById("c").classList.toggle("hide");
       if (document.getElementById("c").classList.contains("hide")) {
+        // document.querySelector("html").style.fontFamily = "'Poppins'";
+        document.getElementById("audio").pause();
         document.querySelector(".matrix-button").innerText = "Red Pill";
         document.querySelector(".matrix-button").style.border = "1px solid red";
         document.getElementById("footer-wrapper").style.backgroundColor =
@@ -59,8 +96,15 @@ export default {
           "initial";
         document.querySelector(".showcase").style.opacity = "initial";
         document.getElementById("navbar-wrapper").style.opacity = "initial";
+        document.getElementById("main-one-wrapper").style.opacity = "initial";
+        document.getElementById("second-main-wrapper").style.backgroundColor =
+          "#000";
+        document.getElementById("submit-background").style.backgroundColor =
+          "#444";
         this.matrix = false;
       } else {
+        // document.querySelector("html").style.fontFamily = "'Libre Barcode 128'";
+        document.getElementById("audio").play();
         document.querySelector(".matrix-button").innerText = "Blue Pill";
         document.querySelector(".matrix-button").style.border =
           "1px solid blue";
@@ -70,11 +114,23 @@ export default {
         document.getElementById("right-image-newsletter").style.opacity = "0.3";
         document.querySelector(".showcase").style.opacity = "0.3";
         document.getElementById("navbar-wrapper").style.opacity = "0.5";
+        document.getElementById("main-one-wrapper").style.opacity = "0.5";
+        document.getElementById("second-main-wrapper").style.backgroundColor =
+          "#00000000";
+        document.getElementById("submit-background").style.backgroundColor =
+          "#00000000";
         this.matrix = true;
       }
     },
     toggleNavbar() {
       this.showNavbar = !this.showNavbar;
+    },
+    simple() {
+      return 0;
+    },
+    emit() {
+      this.$emit("updated");
+      console.log("emitted");
     }
   }
 };
