@@ -332,6 +332,9 @@ export default {
         }
       }
     }
+    .left-container {
+      align-items: flex-start;
+    }
   }
 }
 </style>

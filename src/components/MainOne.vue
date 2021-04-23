@@ -2,7 +2,7 @@
   <div id="main-one-wrapper">
     <div class="description-wrapper">
       <h3>Things I want you to know about</h3>
-      <p>{{ changeImage ? "true" : "false" }}</p>
+      <!-- <p>{{ changeImage ? "true" : "false" }}</p> -->
       <p>
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus
         natus amet id!
