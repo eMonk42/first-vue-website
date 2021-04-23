@@ -220,7 +220,7 @@ export default {
       justify-content: center;
       // padding: 1rem;
       user-select: none;
-      min-width: calc(40vw - 7px);
+      min-width: var(--slider-width); //calc(40vw - 7px);
       position: relative;
       background-color: #222;
       transition: all 0.3s ease-in-out;

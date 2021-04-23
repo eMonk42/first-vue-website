@@ -17,3 +17,6 @@ html {
 .grabbing .slide img {
   transform: scale(0.9);
 }
+:root {
+  --slider-width: calc((100vw - (100vw - 100%)));
+}
