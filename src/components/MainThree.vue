@@ -136,10 +136,10 @@ export default {
 
       const movedBy = this.currentTranslate - this.prevTranslate;
 
-      if (movedBy < -200 && this.currentIndex < this.images.length - 1) {
+      if (movedBy < -150 && this.currentIndex < this.images.length - 1) {
         //200
         this.currentIndex += 1;
-      } else if (movedBy > 200 && this.currentIndex > 0) {
+      } else if (movedBy > 150 && this.currentIndex > 0) {
         this.currentIndex -= 1;
       }
 
@@ -305,15 +305,30 @@ export default {
   .main-three-wrapper {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 6fr 2fr;
+    grid-template-rows: 1fr 1fr;
     .slider-container {
       .slide {
         min-width: 100vw;
         position: relative;
+        height: 100%;
+        //border: 1px solid green;
         img {
           max-width: 100vw;
           min-width: 100vw;
           width: 100vw;
+        }
+        .img-text {
+          position: absolute;
+          top: 0;
+          * {
+            transform: scale(0.7);
+          }
+          h1:hover {
+            letter-spacing: 3px;
+          }
+          h4:hover {
+            letter-spacing: 0px;
+          }
         }
       }
     }

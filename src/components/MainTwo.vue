@@ -294,4 +294,40 @@ export default {
     grid-auto-rows: 1fr;
   }
 }
+@media (max-width: 620px) {
+  #main-two-wrapper {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    max-width: 100%;
+  }
+}
+@media (max-width: 470px) {
+  #main-two-wrapper {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    max-width: 100%;
+    .main-two-list {
+      padding: 1.5rem 0;
+      .list-body {
+        ul {
+          li {
+            .list-row > * {
+              padding: 0 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media (max-width: 430px) {
+  #main-two-wrapper {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    max-width: 100%;
+    .main-two-list {
+      padding: 1.5rem 0;
+    }
+  }
+}
 </style>

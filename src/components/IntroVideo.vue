@@ -198,4 +198,13 @@ export default {
     margin-right: 80px;
   }
 }
+@media (max-width: 440px) {
+  .showcase,
+  .showcaase header {
+    padding: 20px;
+  }
+  .logo {
+    margin-left: -20px;
+  }
+}
 </style>
