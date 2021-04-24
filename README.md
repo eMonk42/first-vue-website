@@ -4,7 +4,7 @@ I built this during a two-day Hackaton at the end of the first half of my Devhau
 
 Thanks to Netlify you can easily visit it online here:
 
-    https://loving-spence-386c87.netlify.app
+    [https://loving-spence-386c87.netlify.app](https://loving-spence-386c87.netlify.app)
 
 At first I added vuetify to the project, because I had no idea where I wanted to go with it, and ended up not using it.
 
