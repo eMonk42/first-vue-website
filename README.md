@@ -1,24 +1,7 @@
-# dropbox-vue-proto
+# Hi there, this is my first Vue-Website
 
-## Project setup
-```
-yarn install
-```
+I built this during a two-day Hackaton at the end of the first half of my DevhausLeipzig CodeCamp-Experience
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+Thanks to Netlify you can easily visit it online here:
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+    https://loving-spence-386c87.netlify.app
